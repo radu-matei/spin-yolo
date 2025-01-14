@@ -5,9 +5,7 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.93"
-image = { version = "0.25.5", default-features = false, features = ["jpeg"] }
-tract = "0.21.7"
-tract-onnx = "0.21.7"
+detection = { path = "../detection" }
 wit-bindgen-rt = { version = "0.37.0", features = ["bitflags"] }
 
 [lib]
