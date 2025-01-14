@@ -491,6 +491,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "detection"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "image",
+ "tract",
+ "tract-onnx",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -505,10 +515,8 @@ name = "directly-rust"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "image",
+ "detection",
  "spin-sdk",
- "tract",
- "tract-onnx",
  "wit-bindgen-rt",
 ]
 
