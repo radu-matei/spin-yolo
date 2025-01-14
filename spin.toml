@@ -20,3 +20,15 @@ workdir = "api"
 
 [component.face-detection.dependencies]
 "component:face-detection-lib/face-detection" = { path = "lib/target/wasm32-wasip1/release/lib.wasm" }
+
+[[trigger.http]]
+route = "/rust/..."
+component = "directly-rust"
+
+[component.directly-rust]
+source = "directly-rust/target/wasm32-wasi/release/directly_rust.wasm"
+allowed_outbound_hosts = []
+[component.directly-rust.build]
+command = "cargo build --target wasm32-wasi --release"
+workdir = "directly-rust"
+watch = ["src/**/*.rs", "Cargo.toml"]
