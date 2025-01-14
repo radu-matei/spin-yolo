@@ -26,9 +26,9 @@ route = "/rust/..."
 component = "directly-rust"
 
 [component.directly-rust]
-source = "directly-rust/target/wasm32-wasi/release/directly_rust.wasm"
+source = "directly-rust/target/wasm32-wasip1/release/directly_rust.wasm"
 allowed_outbound_hosts = []
 [component.directly-rust.build]
-command = "cargo build --target wasm32-wasi --release"
+command = "RUSTFLAGS=-Ctarget-feature=+simd128 cargo build --target wasm32-wasip1 --release"
 workdir = "directly-rust"
 watch = ["src/**/*.rs", "Cargo.toml"]
