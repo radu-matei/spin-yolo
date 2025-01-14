@@ -1,0 +1,34 @@
+package component:face-detection-lib;
+
+/// A simple Wasm world for face detection.
+world classification {
+    export face-detection;
+}
+
+/// Face detection interface.
+interface face-detection {
+    /// Error returned by image detection components.
+    variant detection-error {
+        model-error(string),
+        image-error(string),
+        io-error(string),
+        unknown(string),
+        unclassified,
+    }
+
+    /// Type representing an image.
+    type image = list<u8>;
+
+    /// Resulting box of a detection operation which describes the coordinates
+    /// of the surrounding box.
+    record detection-result {
+        x1: f32,
+        y1: f32,
+        x2: f32,
+        y2: f32,
+        confidence: f32,
+    }
+    
+    /// Detect faces on a given image.
+    detect: func(img: image, confidence-treshold: f32) -> result<list<detection-result>, detection-error>;
+}

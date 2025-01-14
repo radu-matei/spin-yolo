@@ -1,0 +1,22 @@
+spin_manifest_version = 2
+
+[application]
+name = "face-detection"
+version = "0.1.0"
+authors = ["Radu Matei <radu@fermyon.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "face-detection"
+
+[component.face-detection]
+source = "api/target/wasm32-wasip1/release/face_detection.wasm"
+allowed_outbound_hosts = []
+[component.face-detection.build]
+command = "cargo build --target wasm32-wasip1 --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
+workdir = "api"
+
+[component.face-detection.dependencies]
+"component:face-detection-lib/face-detection" = { path = "lib/target/wasm32-wasip1/release/lib.wasm" }
